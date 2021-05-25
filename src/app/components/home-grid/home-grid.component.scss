@@ -7,6 +7,11 @@ $SansPro: 'Source Sans Pro', sans-serif;
     display: flex;
     flex-wrap: wrap;
 }
+.container__element{
+    &.hidden{
+        display: none;
+    }
+}
 .image__card{
     position: relative;
     display: block;
