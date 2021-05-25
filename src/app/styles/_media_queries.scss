@@ -1,0 +1,38 @@
+// $MEDIA-QUERIES
+$XS_MIN_WIDTH: 320px;
+$XS_MAX_WIDTH: 400px;
+$XS_MIN_WIDTH_LANDSCAPE: 640px;
+$SM_MIN_WIDTH: 768px;
+$MD_MIN_WIDTH: 1024px;
+$LG_MIN_WIDTH: 1360px;
+$XLG_MIN_WIDTH: 1920px;
+
+@mixin xs-devices {
+    @media (min-width: #{$XS_MAX_WIDTH}) {
+        @content;
+    }
+}
+
+@mixin sm-devices {
+    @media (min-width: #{$SM_MIN_WIDTH}) {
+        @content;
+    }
+}
+
+@mixin md-devices {
+    @media (min-width: #{$MD_MIN_WIDTH}) {
+        @content;
+    }
+}
+
+@mixin lg-devices {
+    @media (min-width: #{$LG_MIN_WIDTH}) {
+        @content;
+    }
+}
+
+@mixin xlg-devices {
+    @media (min-width: #{$XLG_MIN_WIDTH}) {
+        @content;
+    }
+}

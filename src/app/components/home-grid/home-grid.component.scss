@@ -39,6 +39,8 @@ $SansPro: 'Source Sans Pro', sans-serif;
     padding: 30px;
     font-family: $SansPro;
     color: white;
+    user-select: none;
+    pointer-events: none;
     .title{
         position: relative;
         font-weight: 600;

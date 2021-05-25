@@ -17,82 +17,8 @@
 
 <div class="content" role="main">
 
-  <div class="second__title">
-    Making your Life Easier
-  </div>
-  <h2 class="main__title">Discover the world!</h2>
-
-  <div class="card-container">
-
-    <div class="card card-small active" (click)="handleNavBar($event)" data-category="all" tabindex="0">
-      <p>All</p>
-    </div>
-    
-    <div class="card card-small" (click)="handleNavBar($event)" data-category="travel" tabindex="0">
-      <p>Travel</p>
-    </div>
-    
-    <div class="card card-small" (click)="handleNavBar($event)" data-category="lyfestyle" tabindex="0">
-      <p>Lifestyle</p>
-    </div>
-    
-    <div class="card card-small" (click)="handleNavBar($event)" data-category="business" tabindex="0">
-      <p>Business</p>
-    </div>
-    
-    <!-- <div class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>New Component</span>
-    </div> -->
-
-  </div>
-
-  <home-grid></home-grid>
-
   <router-outlet></router-outlet>
-  <button class="btn__fixed">
-    <i class="fa fa-pencil"></i>
-  </button>
-  <div class="overlay__container">
-    <div class="overlay__background"></div>
-    <div class="overlay__wrapper">
-      <div class="post__container">
-        <h3>Create Post</h3>
-        <div class="information__container">
-          <div class="input">
-            <input type="text" name="title" required>
-            <label>Title</label>
-            <div class="bar"></div>
-            <div class="highlight"></div>
-         </div>
-          <div class="input">
-            <input type="email" name="email" required>
-            <label>Email</label>
-            <div class="bar"></div>
-            <div class="highlight"></div>
-         </div>
-         <div class="select">
-            <select class="select-text" required>
-              <option value="" disabled selected></option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </select>
-            <span class="select-highlight"></span>
-            <span class="select-bar"></span>
-            <label class="select-label">Select</label>
-          </div>
-          <div class="input">
-            <input type="text" name="image" placeholder="https://source.unsplash.com/random" required>
-            <label>URL of the image</label>
-            <div class="bar"></div>
-            <div class="highlight"></div>
-         </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- Footer -->
   <footer>
       Love Angular?&nbsp;

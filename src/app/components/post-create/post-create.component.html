@@ -1,0 +1,43 @@
+<div class="overlay__container">
+    <div class="overlay__background"></div>
+    <div class="overlay__wrapper">
+      <div class="post__container">
+        <h3 class="title">Create Post</h3>
+        <div class="information__container">
+          <div class="input box">
+            <input type="text" name="title" required>
+            <label>Title</label>
+            <div class="bar"></div>
+            <div class="highlight"></div>
+         </div>
+          <div class="input box">
+            <input type="email" name="email" required>
+            <label>Email</label>
+            <div class="bar"></div>
+            <div class="highlight"></div>
+         </div>
+         <div class="select box">
+            <select class="select-text" required>
+              <option value="" disabled selected></option>
+              <option value="1">Travel</option>
+              <option value="2">Lifestyle</option>
+              <option value="3">Business</option>
+            </select>
+            <span class="select-highlight"></span>
+            <span class="select-bar"></span>
+            <label class="select-label">Category</label>
+          </div>
+          <div class="input box">
+            <input type="text" name="image" value="https://source.unsplash.com/random" required>
+            <label>URL of the image</label>
+            <div class="bar"></div>
+            <div class="highlight"></div>
+         </div>
+        </div>
+        <div class="btns__container">
+            <button class="btn cancel" (click)="toggleOverlay()">Cancel</button>
+            <button class="btn save">Save</button>
+        </div>
+      </div>
+    </div>
+</div>
