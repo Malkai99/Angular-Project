@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-project';
+
+  handleNavBar(event) :void{
+    document.querySelectorAll('.card').forEach(element => {
+      if(element.classList.contains('active'))
+        element.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+  }
 }

@@ -1,0 +1,22 @@
+
+<div class="home__grid">
+    <div class="image__card" *ngFor="let data of dataInfo" style="background-image: url({{data.image}});" (mouseover)="changeCardHover($event)" (mouseout)="changeCardHover($event)" >
+        <div class="info__container">
+            <h5 class="title">{{data.title}}</h5>
+            <div class="comments">
+                <p >{{data.comments.length}} Comments</p>
+                <i class="fa fa-comments"></i>
+            </div>
+            <p class="short__desc">{{data.shortDescription}}</p>
+            <p class="category">{{data.category}}</p>
+            <div class="controls">
+                <button class="btn__control">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn__control">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
