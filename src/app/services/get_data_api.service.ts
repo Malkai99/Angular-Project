@@ -54,11 +54,8 @@ export class GetDataService {
 
     getSinglePost(id){
         const currentPost = this.refreshDataService.getValue();
-        console.log(' vuttrmy [pdy] ', this.refreshDataService  )
-        console.log(' asdasda ', currentPost)
-        // console.log(' current post  ', currentPost.filter((post) => post.id === id)[0])
         // console.log(' asdasda ', currentPost.filter((post) => post.id === id)[0])
-        return currentPost.filter((post) => post.id === id)[0];
+        return currentPost.filter((post) => post.id === +id)[0];
     }
 
     getArrayLengthPost(){
