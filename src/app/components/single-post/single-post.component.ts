@@ -11,6 +11,7 @@ export class SinglePostComponent implements OnInit {
   protected idPost: String;
   protected dataService;
   public dataInfo;
+  public comment:String = '';
 
   constructor( private route:ActivatedRoute, private httpClient:HttpClient) { }
 
@@ -26,8 +27,14 @@ export class SinglePostComponent implements OnInit {
     this.httpClient.get(`https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
       .subscribe( reponse => {
         this.dataInfo = reponse;
+        console.log('datasas ', reponse)
       });
       
+  }
+
+  postComment(){
+    this.dataInfo.comments.push({id:3,author:"Santiago Ortega",content: this.comment})
+    this.comment = '';
   }
 
 }

@@ -96,6 +96,8 @@ $SansPro: 'Source Sans Pro', sans-serif;
         opacity: 0;
         display: flex;
         flex-direction: row;
+        z-index: 5;
+        pointer-events: all;
         button{
             box-sizing: border-box;
             position: relative;

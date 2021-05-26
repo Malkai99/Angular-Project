@@ -15,19 +15,19 @@ export class HomeComponentComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.dataService = this.httpClient.get('https://private-c3edb-postsmock.apiary-mock.com/categories')
-      .toPromise()
-      .then( data => {
-        console.log(data)
-        for(let key in data) {
-          // console.log(key)
-          if(data.hasOwnProperty(key)){
-            this.categories.push(data[key])
-          }
-        }
-      })
-      .catch( err => console.log('Couldnt load resource ', err));
-      this.getDataService.getDataPost();
+    // this.dataService = this.httpClient.get('https://private-c3edb-postsmock.apiary-mock.com/categories')
+    //   .toPromise()
+    //   .then( data => {
+    //     console.log(data)
+    //     for(let key in data) {
+    //       // console.log(key)
+    //       if(data.hasOwnProperty(key)){
+    //         this.categories.push(data[key])
+    //       }
+    //     }
+    //   })
+    //   .catch( err => console.log('Couldnt load resource ', err));
+      this.getDataService.getDataPost().subscribe( data => console.log('esta es la data ', data));
       console.log('data servcice******',this.getDataService)
   }
 

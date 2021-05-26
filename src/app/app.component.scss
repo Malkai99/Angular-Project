@@ -8,38 +8,45 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
+  .header__container{
+    margin: 50px 0;
+    text-align: center;
   }
-
-  .toolbar img {
-    margin: 0 16px;
+  .main__title{
+      margin: 0;
+      font-size: 60px;
+      font-weight: 700;
   }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
+  .second__title{
+      display: inline-block;
+      position: relative;
+      padding: 8px 16px;
+      font-size: 18px;
+      color: coral;
+      &::after,&::before{
+          position: absolute;
+          top: 0;
+          display: block;
+          width: 12px;
+          height: 34px;
+          content: " ";
+          border: 2px solid coral;
+      }
+      &::after{
+          right: 0;
+          border-left: none;
+      }
+      &::before{
+          left: 0;
+          border-right: none;
+      }
   }
-
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
-  }
-
   .content {
     position: relative;
     display: flex;
     width: 100%;
     margin: 82px auto 32px;
-    padding: 0 16px;
+    // padding: 0 16px;
     flex-direction: column;
     align-items: center;
   }

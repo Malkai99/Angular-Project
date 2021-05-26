@@ -1,3 +1,40 @@
-<p>single-post works!</p>
+<div class="image__container">
+    <a class="return__element" [routerLink]="['/']" >
+        <i class="fa fa-arrow-left"></i>
+        <p>Return to Home</p>
+    </a>
+    <img class="image__element" [src]="dataInfo.image" [alt]="dataInfo.title" />
+    <h2 class="title">{{dataInfo.title}}</h2>
+    <div class="title__container">
+    </div>
+</div>
 
-DATA: {{dataInfo | json}}
+<div class="description__container">
+    <p  [innerHTML]="dataInfo.description"></p>
+</div>
+
+<div class="comments__container" >
+    <h4 class="comments__title">Comments</h4>
+    <div class="comment__container" *ngFor="let comment of dataInfo.comments">
+        <div class="card__icon">
+            <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="card__body">
+            <p class="author__element">{{comment.author}}</p>
+            <p class="content__element">{{comment.content}}</p>
+        </div>
+    </div>
+    <div class="post__comment--container">
+        <div class="input box not-marign">
+            <textarea [(ngModel)]="comment"></textarea>
+            <label>Write a comment</label>
+            <div class="bar"></div>
+            <div class="highlight"></div>
+         </div>
+         <div class="btns__container">
+            <button class="btn save" type="submit" (click)="postComment()">Add</button>
+         </div>
+    </div>
+</div>
+
+<!-- DATA: {{dataInfo | json}} -->

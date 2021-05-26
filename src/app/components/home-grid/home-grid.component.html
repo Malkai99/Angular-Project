@@ -9,11 +9,11 @@
             </div>
             <p class="short__desc">{{data.shortDescription}}</p>
             <p class="category">{{data.category}}</p>
-            <div class="controls">
-                <button class="btn__control">
+            <div class="controls" (mouseover)="controlsHover()" (mouseout)="controlsHover()">
+                <button class="btn__control" (click)="click()">
                     <i class="fa fa-pencil"></i>
                 </button>
-                <button class="btn__control">
+                <button class="btn__control" (click)="click()">
                     <i class="fa fa-trash"></i>
                 </button>
             </div>

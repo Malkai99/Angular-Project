@@ -1,0 +1,176 @@
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap);
+@import '../../styles/media_queries';
+@import '../../styles//_utilities/inputs';
+$SansPro: 'Source Sans Pro', sans-serif;
+
+// Header image
+.image__container{
+    position: relative;
+    width: 100vw;
+    height: 540px;
+    font-family: $SansPro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .return__element{
+        text-decoration: none;
+        position: absolute;
+        top: 0;
+        left: 20px;
+        z-index: 2;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        i{
+            color: white;
+        }
+        p{
+            color: white;
+            font-size: 12px;
+            margin-left: 15px;
+            font-weight: 600;
+            @include md-devices{
+                font-size: 16px;
+            }
+            @include lg-devices{
+                font-size: 18px;
+            }
+        }
+    }
+
+    .image__element{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        height: 540px;
+        object-fit: cover;
+        box-shadow: 0 0 0 1000px rgb(0 0 0 / 40%) inset;
+        z-index: 1;
+    }
+
+    .title{
+        color: white;
+        z-index: 3;
+        font-size: 18px;
+        font-weight: 700;
+        @include md-devices{
+            font-size: 24px;
+        }
+        @include lg-devices{
+            font-size: 64px;
+        }
+    }
+}
+
+// Description
+.description__container{
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: 20px 10%;
+    font-family: $SansPro;
+    p{
+        font-size: 18px;
+        line-height: initial;
+        @include sm-devices{
+            font-size: 22px;
+        }
+        @include md-devices{
+            font-size: 26px;
+        }
+        @include lg-devices{
+            font-size: 32px;
+        }
+    }
+}
+
+// Comments
+.comments__container{
+    width: 40%;
+    margin: 0 auto;
+    font-family: $SansPro;
+    .comments__title{
+        font-size: 18px;
+        font-weight: 700;
+        text-align: left;
+        @include md-devices{
+            font-size: 24px;
+        }
+        @include lg-devices{
+            font-size: 32px;
+        }
+    }
+
+    .comment__container{
+        display: flex;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 20px;
+        background-color: #fff;
+        box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+        border: 1px solid rgba(0,0,0,.09);
+
+        .card__icon{
+            i{
+                font-size: 36px;
+            }
+        }
+
+        .card__body{
+            margin-left: 10px;
+            .author__element{
+                margin: 0;
+                font-size: 22px;
+                font-weight: bold;
+            }
+            .content__element{
+                font-size: 18px;
+            }
+        }
+    }
+
+    .post__comment--container{
+        font-family: $SansPro;
+        position: relative;
+        display: block;
+        .input{
+            &.not-marign{
+                margin: 20px 0;
+            }
+        }
+    }
+}
+
+.btns__container{
+    position: relative;
+    // width: 85%;
+    .btn{
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        outline: 0;
+        border: none;
+        text-decoration: none;
+        text-align: center;
+        margin: 0;
+        min-width: 64px;
+        line-height: 36px;
+        padding: 0 16px;
+        overflow: visible;
+        border-radius: 5px;
+        background-color: transparent;
+        margin: 0 10px;
+        @include md-devices{
+            min-width: 100px;
+        }
+        &.save{
+            color: white;
+            background-color: #3f51b5;
+        }
+    }
+}

@@ -1,19 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataService } from '../../services/get_data_api.service'
 
+
+interface Post{
+  id:number;
+  title:String;
+  description:String;
+  category:String;
+  image:String;
+}
 @Component({
   selector: 'btn-post-create',
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.scss']
 })
+
 export class PostCreateComponent implements OnInit {
 
-  constructor() { }
+  public post:Post = {
+    id : 0,
+    title : '',
+    description : '',
+    category : '',
+    image : 'https://source.unsplash.com/random',
+
+  };
+  constructor(private getDataService:GetDataService) { }
 
   ngOnInit(): void {
   }
 
+  onSavePost(){
+    this.getDataService.addDataPost(this.post);
+    this.toggleOverlay();
+  }
+
   toggleOverlay(){
-    console.log('click')
     if(!document.querySelector('.overlay__container').classList.contains('active')){
       document.querySelector('.overlay__container').classList.add('active');
     }else{
