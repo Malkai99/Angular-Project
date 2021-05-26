@@ -16,32 +16,16 @@ export default class HomeGridComponent implements OnInit {
   // refreshDataService = new BehaviorSubject<boolean>(true);
 
   constructor(private httpClient:HttpClient, private getDataService:GetDataService  ) {
-
-    // this.dataService = this.httpClient.get('https://private-c3edb-postsmock.apiary-mock.com/posts');
-    // this.dataService
-    //   .toPromise()
-    //   .then( data => {
-    //     console.log(data)
-    //     for(let key in data) {
-    //       // console.log(key)
-    //       if(data.hasOwnProperty(key)){
-    //         this.dataInfo.push(data[key])
-    //       }
-    //     }
-    //   })
-    //   .catch( err => console.log('Couldnt load resource ', err));
       this.cardHover = false;
-   }
+  }
 
   ngOnInit(): void {
     // this.dataService = this.getDataService.dataService.subscribe( data => {
     //   this.dataInfo = data;
     //   // console.log('DATA INFO **********  ', this.dataInfo );
     // });
-
-
     this.dataService = this.getDataService.obsDataService$;
-    
+    console.log('service ', this.dataService)
   }
 
   changeCardHover(e): void{
@@ -53,11 +37,6 @@ export default class HomeGridComponent implements OnInit {
     }
   }
 
-  preventDefaultClick(event){
-    // console.log('click')
-    event.preventDefault();
-    event.stopPropagation();
-  }
 
   controlsHover(event){
     // event.currentTarget.parentNode.parentNode.classList.remove('hover')
@@ -67,7 +46,6 @@ export default class HomeGridComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.dataService.unsubscribe();
   }
 
 

@@ -114,7 +114,7 @@ $SansPro: 'Source Sans Pro', sans-serif;
   position: fixed;
   background-color: coral;
   top: 145px;
-  right: 20px;
+  right: 15%;
   z-index: 1;
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
   box-sizing: border-box;
@@ -146,6 +146,9 @@ $SansPro: 'Source Sans Pro', sans-serif;
   padding: 0;
   flex-shrink: 0;
   transition: background 0.8s;
+  @include md-devices{
+    right: 20px;
+  }
   &:active{
     background-color: rgba($color: #000, $alpha: .30);
     background-size: 100%;

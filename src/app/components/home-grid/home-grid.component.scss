@@ -17,6 +17,7 @@ $SansPro: 'Source Sans Pro', sans-serif;
         display: none;
     }
 }
+
 .image__card{
     position: relative;
     display: block;
@@ -58,6 +59,7 @@ $SansPro: 'Source Sans Pro', sans-serif;
 .info__container{
     position: absolute;
     bottom: 0;
+    width: 100%;
     padding: 30px;
     font-family: $SansPro;
     color: white;
@@ -109,7 +111,8 @@ $SansPro: 'Source Sans Pro', sans-serif;
     }
     .controls{
         position: absolute;
-        right: 20px;
+        right: 10%;
+        // right: 20px;
         bottom: 30px;
         color: #fff;
         visibility: hidden;

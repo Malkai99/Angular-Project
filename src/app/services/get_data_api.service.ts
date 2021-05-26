@@ -15,19 +15,16 @@ export class GetDataService {
     dataInfo=[];
     @Input('posts') postsData;
     constructor(private httpClient: HttpClient) {
+        this.obsDataService$ = this.refreshDataService.asObservable();
         this.getDataPost().subscribe( data => this.setPosts(data) );
+        // this.dataService = this.getDataPost();
+        console.log('observer ', this.obsDataService$)
+
         // this.getDataPost().subscribe( data => this.dataInfo['posts'] = data );
-        // this.dataService = this.refreshDataService.pipe(switchMap(_ => this.getDataPost()));
-        this.dataService = this.getDataPost();
         // this.refreshDataService.subscribe( data =>  data)
-
-        // console.log('Observable data',this.dataService)
-        // console.log('info data ',this.dataInfo)
-
-        this.postsData = this.dataInfo['posts'];
+        // this.postsData = this.dataInfo['posts'];
         // console.log('post data ',this.postsData)
 
-        this.obsDataService$ = this.refreshDataService.asObservable();
 
     }
 
@@ -44,30 +41,36 @@ export class GetDataService {
         .pipe(map( (response:Response) =>  response))
         return respo;
     }
-    
+
     getCategories() {
         return this.httpClient.get('https://private-c3edb-postsmock.apiary-mock.com/categories')
         .pipe(map( (response:Response) =>  response))
-        
     }
 
     setPost(post){
-        let currentPost = this.refreshDataService.getValue();
+        const currentPost = this.refreshDataService.getValue();
         this.refreshDataService.next([...currentPost,post])
     }
 
+    getSinglePost(id){
+        const currentPost = this.refreshDataService.getValue();
+        console.log(' vuttrmy [pdy] ', this.refreshDataService  )
+        console.log(' asdasda ', currentPost)
+        // console.log(' current post  ', currentPost.filter((post) => post.id === id)[0])
+        // console.log(' asdasda ', currentPost.filter((post) => post.id === id)[0])
+        return currentPost.filter((post) => post.id === id)[0];
+    }
+
     getArrayLengthPost(){
-        let currentPost = this.refreshDataService.getValue();
+        const currentPost = this.refreshDataService.getValue();
         return currentPost.length;
     }
 
     addDataPost(post) {
-
         post.id = this.getArrayLengthPost() + 1;
         // this.dataInfo['posts'].push(post);
         // console.log('push data ', this.dataInfo['posts'])
         this.setPost(post);
-        // this.refreshDataService.next(this.dataInfo);
     }
 
 }

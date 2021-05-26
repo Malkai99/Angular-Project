@@ -5,9 +5,11 @@ import { GetDataService } from '../../services/get_data_api.service'
 interface Post{
   id:number;
   title:String;
+  shortDescription:String;
   description:String;
   category:String;
   image:String;
+  comments:Array<Object>;
 }
 @Component({
   selector: 'btn-post-create',
@@ -21,8 +23,10 @@ export class PostCreateComponent implements OnInit {
     id : 0,
     title : '',
     description : '',
+    shortDescription : '',
     category : '',
     image : 'https://source.unsplash.com/random',
+    comments: []
 
   };
   constructor(private getDataService:GetDataService) { }
