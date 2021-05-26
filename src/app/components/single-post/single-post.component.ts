@@ -10,8 +10,11 @@ import { async } from 'rxjs/internal/scheduler/async';
   styleUrls: ['./single-post.component.scss']
 })
 export class SinglePostComponent implements OnInit {
+  message;
+  response;
+  apiURL;
   protected idPost: String;
-  protected dataService;
+  public dataService;
   public dataInfo;
   public comment:String = '';
 
@@ -22,22 +25,23 @@ export class SinglePostComponent implements OnInit {
 
     this.route.paramMap.subscribe( (paramMap:Object) => {
       const { params }:any = paramMap;
+      console.log('REsolve ',this.dataService.subscribe(data => data))
       this.loadPost(params.variable)
     })
   }
 
-  loadPost(id:String){
+  async loadPost(id:String){
     // console.log('get link ', `https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
     // this.httpClient.get(`https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
     //   .subscribe( reponse => {
     //     this.dataInfo = reponse;
     //     // console.log('datasas ', reponse)
     //   });
-
-    this.dataInfo = this.getDataService.getSinglePost(id);
-    // console.log('data service ***** ', this.getDataService.getSinglePost(id))
-    // console.log('data  ***** ', this.dataService.getSinglePost(id))
+    this.dataInfo = await this.getDataService.getSinglePost(id);
+    console.log('Local storage ',JSON.parse(localStorage.getItem('Posts')))
   }
+
+
 
   postComment(){
     this.dataInfo.comments.push({id:3,author:"Santiago Ortega",content: this.comment})

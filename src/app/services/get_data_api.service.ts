@@ -7,7 +7,7 @@ import { Post } from '../models/post.model';
     providedIn: 'root',
 })
 export class GetDataService {
-
+    private localKey = "Posts";
     dataService;
     // dataService: Observable<Array<{}>>;
     obsDataService$: Observable<any>;
@@ -16,24 +16,35 @@ export class GetDataService {
     @Input('posts') postsData;
     constructor(private httpClient: HttpClient) {
         this.obsDataService$ = this.refreshDataService.asObservable();
-        this.getDataPost().subscribe( data => this.setPosts(data) );
+        if(this.loadLocalStorage()){
+            this.setPosts(this.loadLocalStorage(),false)
+        }else{
+            this.getDataPost().subscribe( data => this.setPosts(data) );
+        }
         // this.dataService = this.getDataPost();
         console.log('observer ', this.obsDataService$)
 
-        // this.getDataPost().subscribe( data => this.dataInfo['posts'] = data );
-        // this.refreshDataService.subscribe( data =>  data)
-        // this.postsData = this.dataInfo['posts'];
-        // console.log('post data ',this.postsData)
-
-
     }
 
-    setPosts(posts){
+    setPosts(posts,saveOnLocal=true){
         this.refreshDataService.next(posts);
+        if(saveOnLocal){
+            this.saveOnLocalStorage(JSON.stringify(posts));
+        }
     }
 
     ngOnInit(): void {
-        // this.refreshDataService.subscribe( data =>  console.log('refresh data ', data));
+        // this.refreshDataService$.subscribe( data =>  localStorage.setItem(this.localKey,data));
+    }
+
+    saveOnLocalStorage(data){
+        console.log('data')
+        localStorage.setItem(this.localKey,data);
+    }
+
+    loadLocalStorage(){
+        console.log('local key', JSON.parse(localStorage.getItem(this.localKey)))
+        return JSON.parse(localStorage.getItem(this.localKey));
     }
 
     getDataPost() {
@@ -50,6 +61,7 @@ export class GetDataService {
     setPost(post){
         const currentPost = this.refreshDataService.getValue();
         this.refreshDataService.next([...currentPost,post])
+        this.saveOnLocalStorage(JSON.stringify(this.refreshDataService.getValue()));
     }
 
     getSinglePost(id){
