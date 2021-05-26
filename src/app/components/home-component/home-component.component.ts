@@ -48,7 +48,7 @@ export class HomeComponentComponent implements OnInit {
       }
 
       if(element.getAttribute('data-category') !== event.currentTarget.getAttribute('data-category')){
-        console.log('data element ', element.getAttribute('data-category'))
+        // console.log('data element ', element.getAttribute('data-category'))
         if(!element.classList.contains('hidden'))
           element.classList.add('hidden');
       }else if(element.classList.contains('hidden')){
