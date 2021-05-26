@@ -34,10 +34,13 @@ export default class HomeGridComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.dataService = this.getDataService.dataService.subscribe( data => {
-      this.dataInfo = data;
-      console.log('DATA INFO **********  ', this.dataInfo );
-    });
+    // this.dataService = this.getDataService.dataService.subscribe( data => {
+    //   this.dataInfo = data;
+    //   // console.log('DATA INFO **********  ', this.dataInfo );
+    // });
+
+
+    this.dataService = this.getDataService.obsDataService$;
     
   }
 
@@ -51,7 +54,7 @@ export default class HomeGridComponent implements OnInit {
   }
 
   preventDefaultClick(event){
-    console.log('click')
+    // console.log('click')
     event.preventDefault();
     event.stopPropagation();
   }

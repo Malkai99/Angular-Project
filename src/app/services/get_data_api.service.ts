@@ -10,25 +10,33 @@ export class GetDataService {
 
     dataService;
     // dataService: Observable<Array<{}>>;
-    refreshDataService = new BehaviorSubject<Array<{}>>([]);
+    obsDataService$: Observable<any>;
+    refreshDataService = new BehaviorSubject<any>(null);
     dataInfo=[];
     @Input('posts') postsData;
     constructor(private httpClient: HttpClient) {
-        this.getDataPost().subscribe( data => this.dataInfo['posts'] = data );
+        this.getDataPost().subscribe( data => this.setPosts(data) );
+        // this.getDataPost().subscribe( data => this.dataInfo['posts'] = data );
         // this.dataService = this.refreshDataService.pipe(switchMap(_ => this.getDataPost()));
         this.dataService = this.getDataPost();
-        this.refreshDataService.subscribe( data =>  data)
+        // this.refreshDataService.subscribe( data =>  data)
 
-        console.log('Observable data',this.dataService)
-        console.log('info data ',this.dataInfo)
+        // console.log('Observable data',this.dataService)
+        // console.log('info data ',this.dataInfo)
 
         this.postsData = this.dataInfo['posts'];
-        console.log('post data ',this.postsData)
+        // console.log('post data ',this.postsData)
+
+        this.obsDataService$ = this.refreshDataService.asObservable();
 
     }
 
+    setPosts(posts){
+        this.refreshDataService.next(posts);
+    }
+
     ngOnInit(): void {
-        this.refreshDataService.subscribe( data =>  console.log('refresh data ', data));
+        // this.refreshDataService.subscribe( data =>  console.log('refresh data ', data));
     }
 
     getDataPost() {
@@ -43,11 +51,23 @@ export class GetDataService {
         
     }
 
+    setPost(post){
+        let currentPost = this.refreshDataService.getValue();
+        this.refreshDataService.next([...currentPost,post])
+    }
+
+    getArrayLengthPost(){
+        let currentPost = this.refreshDataService.getValue();
+        return currentPost.length;
+    }
+
     addDataPost(post) {
-        post.id = this.dataInfo['posts'].length + 1;
-        this.dataInfo['posts'].push(post);
-        console.log('pus data ', this.dataInfo['posts'])
-        this.refreshDataService.next(this.dataInfo);
+
+        post.id = this.getArrayLengthPost() + 1;
+        // this.dataInfo['posts'].push(post);
+        // console.log('push data ', this.dataInfo['posts'])
+        this.setPost(post);
+        // this.refreshDataService.next(this.dataInfo);
     }
 
 }

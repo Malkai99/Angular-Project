@@ -27,8 +27,8 @@ export class HomeComponentComponent implements OnInit {
     //     }
     //   })
     //   .catch( err => console.log('Couldnt load resource ', err));
-      this.getDataService.getDataPost().subscribe( data => console.log('esta es la data ', data));
-      console.log('data servcice******',this.getDataService)
+      // this.getDataService.getDataPost().subscribe( data => console.log('esta es la data ', data));
+      // console.log('data servcice******',this.getDataService)
   }
 
   handleNavBar(event) :void{
@@ -40,7 +40,7 @@ export class HomeComponentComponent implements OnInit {
 
     document.querySelectorAll('.container__element').forEach( element => {
       if(event.currentTarget.getAttribute('data-category') == 'all'){
-        console.log('entro all')
+        // console.log('entro all')
         if(element.classList.contains('hidden')){
           element.classList.remove('hidden');
         }
@@ -59,7 +59,7 @@ export class HomeComponentComponent implements OnInit {
   }
   
   toggleOverlay(){
-    console.log('click')
+    // console.log('click')
     if(!document.querySelector('.overlay__container').classList.contains('active')){
       document.querySelector('.overlay__container').classList.add('active');
     }else{

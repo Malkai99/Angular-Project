@@ -23,11 +23,11 @@ export class SinglePostComponent implements OnInit {
   }
 
   loadPost(id:String){
-    console.log('get link ', `https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
+    // console.log('get link ', `https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
     this.httpClient.get(`https://private-c3edb-postsmock.apiary-mock.com/posts/{${id}}`)
       .subscribe( reponse => {
         this.dataInfo = reponse;
-        console.log('datasas ', reponse)
+        // console.log('datasas ', reponse)
       });
       
   }

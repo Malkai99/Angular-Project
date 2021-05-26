@@ -1,6 +1,6 @@
 
 <div class="home__grid">
-    <div class="container__element image__card" [attr.data-category]="data.category" *ngFor="let data of dataInfo" [routerLink]="['post', data.id]" routerLinkActive="router-link-active" style="background-image: url({{data.image}});" (mouseover)="changeCardHover($event)" (mouseout)="changeCardHover($event)" >
+    <div class="container__element image__card" [attr.data-category]="data.category" *ngFor="let data of dataService | async" [routerLink]="['post', data.id]" routerLinkActive="router-link-active" style="background-image: url({{data.image}});" (mouseover)="changeCardHover($event)" (mouseout)="changeCardHover($event)" >
         <div class="info__container">
             <h5 class="title">{{data.title}}</h5>
             <div class="comments">
