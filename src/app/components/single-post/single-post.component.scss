@@ -91,9 +91,13 @@ $SansPro: 'Source Sans Pro', sans-serif;
 
 // Comments
 .comments__container{
-    width: 40%;
+    width: 80%;
     margin: 0 auto;
     font-family: $SansPro;
+    margin-bottom: 40px;
+    @include md-devices{
+        width: 40%;
+    }
     .comments__title{
         font-size: 18px;
         font-weight: 700;

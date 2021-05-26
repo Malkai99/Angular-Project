@@ -50,8 +50,17 @@ export default class HomeGridComponent implements OnInit {
     }
   }
 
-  click(){
+  preventDefaultClick(event){
     console.log('click')
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  controlsHover(event){
+    // event.currentTarget.parentNode.parentNode.classList.remove('hover')
+    // event.currentTarget.parentNode.parentNode.classList.add('card__hover')
+    // console.log('parent ',event.currentTarget.parentNode.parentNode)
+
   }
 
   ngOnDestroy(){

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap);
+@import '../../styles/media_queries';
 $SansPro: 'Source Sans Pro', sans-serif;
 
 .home__grid{
@@ -6,6 +7,10 @@ $SansPro: 'Source Sans Pro', sans-serif;
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    @include md-devices{
+        flex-direction: row;
+    }
 }
 .container__element{
     &.hidden{
@@ -15,7 +20,7 @@ $SansPro: 'Source Sans Pro', sans-serif;
 .image__card{
     position: relative;
     display: block;
-    width: 50%;
+    width: 100%;
     height: 350px;
     background-position: center center;
     background-size: cover;
@@ -23,6 +28,9 @@ $SansPro: 'Source Sans Pro', sans-serif;
     box-shadow: 0 0 0 1000px rgb(0 0 0 / 20%) inset;
     transition: all 350ms ease-in-out;
     cursor: pointer;
+    @include md-devices{
+        width: 50%;
+    }
     &.hover{
         box-shadow: 0 0 0 1000px rgb(0 0 0 / 40%) inset;
         .info__container{
@@ -31,6 +39,15 @@ $SansPro: 'Source Sans Pro', sans-serif;
             }
         }
         .controls{
+            transition: .5s all;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &.controls__hover{
+        pointer-events: none;
+        .controls{
+            pointer-events: all;
             transition: .5s all;
             visibility: visible;
             opacity: 1;
@@ -49,9 +66,12 @@ $SansPro: 'Source Sans Pro', sans-serif;
     .title{
         position: relative;
         font-weight: 600;
-        font-size: 40px;
+        font-size: 26px;
         line-height: 42px;
         margin: 10px 0;
+        @include md-devices{
+            font-size: 40px;
+        }
         &::before{
             content: " ";
             display: block;
