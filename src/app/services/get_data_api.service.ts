@@ -38,8 +38,16 @@ export class GetDataService {
     }
 
     saveOnLocalStorage(data){
-        console.log('data')
+        console.log('data', JSON.parse(data))
         localStorage.setItem(this.localKey,data);
+    }
+
+    editSinglePostLocalStorage(postData){
+        let dataStorage = JSON.parse(localStorage.getItem(this.localKey));
+        console.log('Recive data ', postData)
+        dataStorage.filter((post) => post.id === +postData.id)[0] = {};
+        console.log('Data stprage',dataStorage.filter((post) => post.id === +postData.id)[0])
+        this.saveOnLocalStorage(JSON.stringify(dataStorage));
     }
 
     loadLocalStorage(){
@@ -64,9 +72,14 @@ export class GetDataService {
         this.saveOnLocalStorage(JSON.stringify(this.refreshDataService.getValue()));
     }
 
+    updatePostComments(id, comments){
+        const currentPost = this.refreshDataService.getValue().filter((post) => post.id === +id)[0];
+        currentPost.comments = comments;
+        this.editSinglePostLocalStorage(currentPost);
+    }
+
     getSinglePost(id){
         const currentPost = this.refreshDataService.getValue();
-        // console.log(' asdasda ', currentPost.filter((post) => post.id === id)[0])
         return currentPost.filter((post) => post.id === +id)[0];
     }
 
@@ -77,8 +90,6 @@ export class GetDataService {
 
     addDataPost(post) {
         post.id = this.getArrayLengthPost() + 1;
-        // this.dataInfo['posts'].push(post);
-        // console.log('push data ', this.dataInfo['posts'])
         this.setPost(post);
     }
 

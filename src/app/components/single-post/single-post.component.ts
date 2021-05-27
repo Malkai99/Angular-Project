@@ -44,8 +44,9 @@ export class SinglePostComponent implements OnInit {
 
 
   postComment(){
-    this.dataInfo.comments.push({id:3,author:"Santiago Ortega",content: this.comment})
+    this.dataInfo.comments.push({id:this.dataInfo.comments.length,author:"Santiago Ortega",content: this.comment})
     this.comment = '';
+    this.getDataService.updatePostComments(this.dataInfo.id,this.dataInfo.comments);
   }
 
 }
